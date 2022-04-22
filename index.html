@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600&family=Overpass:ital,wght@0,200;0,300;0,400;1,200&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Lexend+Deca:wght@100;200;300;400;500;600;700;900&family=Manrope:wght@200;400&family=Nunito:wght@200;300;500;600;700;800;900&family=Outfit:wght@300;400&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;1,100;1,300&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/181488b1bc.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Divfinder - Github USer API</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        width: 100%;
+        height: 100%;
+        background: hsl(216, 50%, 16%);
+        color: #ffffff;
+      }
+      .container {
+        position: absolute;
+        width: 35vw;
+        height: 55vh;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: hsl(217, 54%, 11%);
+        border-radius: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .header {
+        position: relative;
+        width: 90%;
+        height: 15%;
+        display: flex;
+        flex-direction: column;
+        top: 25px;
+      }
+
+      .title {
+        position: absolute;
+        font-weight: 900;
+        font-size: 25px;
+      }
+      .light {
+        position: absolute;
+        width: 10%;
+        font-size: 16px;
+        font-weight: 900;
+        right: 60px;
+        top: 12px;
+      }
+
+      img {
+        position: absolute;
+        width: 35px;
+        height: 25px;
+        object-fit: cover;
+        right: 15px;
+        top: 9.5px;
+      }
+
+      .search {
+        position: relative;
+        width: 90%;
+        height: 15%;
+        background-color: hsl(217, 54%, 11%);
+        border-radius: 20px;
+      }
+      .icon {
+        position: relative;
+        top: 11px;
+        left: 8px;
+      }
+
+      .searchForm {
+        position: absolute;
+        left: 53px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        top: 10px;
+      }
+
+      .searchForm input {
+        width: 24vw;
+        height: 5vh;
+        border-radius: 20px;
+        font-family: "Courier New", Courier, monospace;
+        font-weight: 900;
+        font-size: 25px;
+        color: hsl(216, 50%, 16%);
+        font-style: bold;
+      }
+
+      .searchForm button {
+        position: absolute;
+        width: 4.5vw;
+        height: 5vh;
+        border-radius: 20px;
+        background-color: #4169e1;
+        color: #ffffff;
+        border: 1px solid #4169e1;
+      }
+
+      .dataField {
+        position: relative;
+        width: 90%;
+        height: 60%;
+        top: 5%;
+        background-color: hsl(217, 54%, 11%);
+        border-radius: 18px;
+        font-size: 13px;
+      }
+
+      .profile {
+        position: absolute;
+        width: 100%;
+        height: 12vh;
+        left: 5%;
+        top: 10px;
+        width: inherit;
+        display: flex;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .avatar {
+        position: absolute;
+        left: 17px;
+        top: 0px;
+        border-radius: 50px;
+      }
+
+      .avatar img {
+        position: relative;
+        width: 90px;
+        height: 90px;
+        top: 1.3px;
+        left: 2.2px;
+        object-fit: cover;
+        border-radius: 50px;
+      }
+
+      .profile-name {
+        position: absolute;
+        left: 27%;
+        width: 30%;
+        height: inherit;
+        font-size: 18px;
+      }
+
+      .other-deatils {
+        position: absolute;
+        top: 60px;
+
+        width: 230%;
+        height: 30%;
+
+        font-size: 16px;
+      }
+
+      .joinedDate {
+        position: absolute;
+        right: -5px;
+        width: 35%;
+        height: inherit;
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+        font-size: 15px;
+      }
+
+      .joinedDate p {
+        position: absolute;
+        top: 6%;
+        left: 26%;
+      }
+
+      .actual-data {
+        position: absolute;
+        top: 59.5%;
+        left: 30%;
+        width: 60%;
+        height: 15%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        padding: 12px;
+        font-family: "Courier New", Courier, monospace;
+        background: hsl(216, 50%, 16%);
+      }
+
+      .demographic {
+        position: absolute;
+        left: 30%;
+        top: 75%;
+        width: 60%;
+        height: 21%;
+        font-family: "Courier New", Courier, monospace;
+      }
+
+      .location {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+      }
+
+      .location img {
+        position: absolute;
+        left: 10px;
+        top: 5px;
+        top: 17px;
+        width: 20px;
+        height: 18px;
+      }
+
+      .location p {
+        position: absolute;
+        left: 23%;
+        top: 17px;
+        font-size: 16px;
+      }
+
+      .social-media {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        right: 0;
+      }
+
+      .social-media img {
+        position: absolute;
+        top: 5px;
+        left: 17%;
+        top: 17px;
+        width: 20px;
+        height: 18px;
+      }
+
+      .social-media p {
+        position: absolute;
+        left: 32%;
+        top: 17px;
+        font-size: 16px;
+      }
+
+      .link {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        bottom: 0px;
+        left: 0;
+      }
+
+      .link img {
+        position: absolute;
+        left: 4%;
+        top: 17px;
+        width: 20px;
+        height: 18px;
+      }
+
+      .link p {
+        position: absolute;
+        left: 23%;
+        top: 17px;
+        font-size: 10px;
+      }
+
+      .git {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        bottom: 0;
+        right: 0;
+      }
+
+      .git img {
+        position: absolute;
+        top: 7px;
+        left: 17%;
+        top: 17px;
+        width: 20px;
+        height: 18px;
+      }
+
+      .git p {
+        position: absolute;
+        left: 32%;
+        top: 17px;
+        font-size: 16px;
+      }
+
+      @media screen and (max-width: 650px) {
+        * {
+          padding: 0;
+          margin: 0;
+        }
+
+        body {
+          width: 100%;
+          height: 100%;
+          background: hsl(216, 50%, 16%);
+          color: #ffffff;
+        }
+        .container {
+          position: absolute;
+          width: 100vw;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          bottom: -2px;
+          margin: 0%;
+          border-radius: 0;
+        }
+
+        .header {
+          display: none;
+        }
+
+        .search {
+          position: relative;
+          width: 90%;
+          height: 15%;
+          background-color: hsl(217, 54%, 11%);
+          border-radius: 0px;
+          top: 5%;
+        }
+        .icon {
+          position: relative;
+          top: 20px;
+          left: 0px;
+        }
+
+        .searchForm {
+          position: absolute;
+          left: 47px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          top: 14px;
+        }
+
+        .searchForm input {
+          width: 55vw;
+          height: 8vh;
+          border-radius: 20px;
+          font-family: "Courier New", Courier, monospace;
+          font-weight: 900;
+          font-size: 15px;
+          color: hsl(216, 50%, 16%);
+          font-style: bold;
+        }
+
+        .searchForm button {
+          position: absolute;
+          width: 18.5vw;
+          height: 6vh;
+          border-radius: 20px;
+          background-color: #4169e1;
+          color: #ffffff;
+          border: 1px solid #4169e1;
+          top: 10px;
+        }
+
+        .dataField {
+          position: relative;
+          width: 90vw;
+          height: 60vh;
+          top: 5%;
+          background-color: hsl(217, 54%, 11%);
+          border-radius: 18px;
+          font-size: 13px;
+        }
+
+        .profile {
+          position: absolute;
+          width: 100%;
+          height: 12vh;
+          left: 5%;
+          top: 10px;
+          width: inherit;
+          display: flex;
+          font-family: "Courier New", Courier, monospace;
+        }
+
+        .avatar {
+          position: absolute;
+          left: 0px;
+          top: 0px;
+          border-radius: 50px;
+        }
+
+        .avatar img {
+          position: relative;
+          width: 90px;
+          height: 90px;
+          top: 1.3px;
+          left: -5px;
+          object-fit: cover;
+          border-radius: 50px;
+        }
+
+        .profile-name {
+          position: absolute;
+          left: 27%;
+          width: 30%;
+          height: inherit;
+          font-size: 18px;
+        }
+
+        .other-deatils {
+          position: absolute;
+          top: 60px;
+
+          width: 230%;
+          height: 30%;
+
+          font-size: 16px;
+        }
+
+        .joinedDate {
+          display: none;
+        }
+
+        .actual-data {
+          position: absolute;
+          top: 45.5%;
+          left: 4%;
+          width: 90%;
+          height: 15%;
+          border-radius: 20px;
+          display: flex;
+          justify-content: space-between;
+          padding: 12px;
+          font-family: "Courier New", Courier, monospace;
+          background: hsl(216, 50%, 16%);
+        }
+
+        .demographic {
+          background: hsl(216, 50%, 16%);
+          position: absolute;
+          left: 4%;
+          top: 70%;
+          width: 90%;
+          height: 21%;
+          font-family: "Courier New", Courier, monospace;
+        }
+
+        .social-media {
+          position: absolute;
+          width: 50%;
+          height: 50%;
+          right: -25px;
+        }
+
+        .social-media p {
+          left: 60px;
+        }
+
+        .git {
+          position: absolute;
+          width: 50%;
+          height: 50%;
+          right: -25px;
+        }
+        .git p {
+          left: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">devfinder</div>
+        <div class="light">LIGHT</div>
+        <img src="" alt=""  class="clickLight"/>
+      </div>
+
+      <div class="search">
+        <div class="icon">
+          <i class="fa-solid fa-magnifying-glass fa-2x"></i>
+        </div>
+
+        <div class="searchForm">
+          <form>
+            <input
+              type="text"
+              placeholder="Search Github Username"
+              class="searchData"
+            />
+            <button type="button" class="searchButton">Search</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="dataField">
+        <div class="profile">
+          <div class="avatar"></div>
+
+          <div class="profile-name">
+            <div class="namee"></div>
+            <div class="other-deatils"></div>
+          </div>
+
+          <div class="joinedDate">
+            <p class="dateofJoin"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="actual-data">
+        <div class="repos">
+          Repos
+          <p class="reposNumber"></p>
+        </div>
+
+        <div class="followers">
+          followers
+          <p class="followerNumbers"></p>
+        </div>
+
+        <div class="following">
+          following
+          <p class="followingNumbers"></p>
+        </div>
+      </div>
+
+      <div class="demographic">
+        <div class="location">
+          <img src="./images/location-xxl.png" alt="" />
+          <p class="location-details"></p>
+        </div>
+
+        <div class="social-media">
+          <img src="./images/twitter-xxl.png" alt="" />
+          <p class="socialmedia-details"></p>
+        </div>
+
+        <div class="link">
+          <img src="./images/link-5-xxl.png" alt="" />
+          <p class="link-details"></p>
+        </div>
+
+        <div class="git">
+          <img src="./images/github-xxl.png" alt="" />
+          <p class="git-details"></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">umanand</a>.
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
